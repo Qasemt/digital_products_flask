@@ -1,11 +1,19 @@
-
 from flask import Flask, render_template
+from flask_migrate import Migrate
+from flask_sqlalchemy import SQLAlchemy
 from config import Config
-from app.home.routes import  home_bp
-from app.products.routes import products_bp
+from apps.home.routes import  home_bp
+from apps.products.routes import products_bp
+
 def create_app(config_class=Config):
     app = Flask(__name__)
+
     app.config.from_object(config_class)
+
+    db = SQLAlchemy(app)
+    migrate = Migrate(app, db)
+
+
 
     # Register blueprints here
    
@@ -30,3 +38,6 @@ def create_app(config_class=Config):
         return '<h1>Testing the Flask Application Factory Pattern</h1>'
 
     return app
+
+
+app = create_app()

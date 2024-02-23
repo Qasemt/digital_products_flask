@@ -1,9 +1,9 @@
 import datetime
-from app import db
+from apps import db
 
 
 class Category(db.Model):
-    __tablename__ = "category"
+    __tablename__ = "categorys"
 
     id = db.Column(db.Integer, primary_key=True)  # Add primary key column
     parent_id = db.Column(db.Integer, db.ForeignKey("category.id"))
@@ -18,7 +18,7 @@ class Category(db.Model):
 
 
 class Product(db.Model):
-    __tablename__ = "product"
+    __tablename__ = "products"
     id = db.Column(db.Integer, primary_key=True)  # Add primary key column
     title = db.Column(db.String(50))
     description = db.Column(db.Text)
@@ -39,7 +39,7 @@ product_category_association = db.Table(
 
 
 class File(db.Model):
-    __tablename__ = "file"
+    __tablename__ = "files"
     id = db.Column(db.Integer, primary_key=True)  # Add primary key column
     product_id = db.Column(db.Integer, db.ForeignKey("product.id"))
     title = db.Column(db.String(50))

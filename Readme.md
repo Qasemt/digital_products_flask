@@ -6,7 +6,8 @@
 * [BluePrint Sample 1](https://realpython.com/flask-blueprint/)
 * [BluePrint Sample 2](https://www.freecodecamp.org/news/how-to-use-blueprints-to-organize-flask-apps/)
 * [Large project sample](https://www.digitalocean.com/community/tutorials/how-to-structure-a-large-flask-application-with-flask-blueprints-and-flask-sqlalchemy)
-* [sample ](https://github.com/rickyyangrui/Flask_Movie_Site)
+* [Sample ](https://github.com/rickyyangrui/Flask_Movie_Site)
+
 ### Installing (for linux)
 
 ```
