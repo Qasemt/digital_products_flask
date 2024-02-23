@@ -1,9 +1,10 @@
 import datetime
-from apps import db
 
-
+from flask_sqlalchemy import SQLAlchemy
+ 
+db = SQLAlchemy()
 class Category(db.Model):
-    __tablename__ = "categorys"
+    __tablename__ = "category"
 
     id = db.Column(db.Integer, primary_key=True)  # Add primary key column
     parent_id = db.Column(db.Integer, db.ForeignKey("category.id"))
@@ -18,7 +19,7 @@ class Category(db.Model):
 
 
 class Product(db.Model):
-    __tablename__ = "products"
+    __tablename__ = "product"
     id = db.Column(db.Integer, primary_key=True)  # Add primary key column
     title = db.Column(db.String(50))
     description = db.Column(db.Text)
@@ -39,7 +40,7 @@ product_category_association = db.Table(
 
 
 class File(db.Model):
-    __tablename__ = "files"
+    __tablename__ = "file"
     id = db.Column(db.Integer, primary_key=True)  # Add primary key column
     product_id = db.Column(db.Integer, db.ForeignKey("product.id"))
     title = db.Column(db.String(50))
@@ -48,3 +49,15 @@ class File(db.Model):
     is_enable = db.Column(db.Boolean, default=True)
     created_time = db.Column(db.DateTime, default=datetime.datetime.utcnow)
     updated_time = db.Column(db.DateTime, onupdate=datetime.datetime.utcnow)
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    email = db.Column(db.String(120), unique=True)
+
+    def __init__(self, username, email):
+        self.username = username
+        self.email = email
+
+    def __repr__(self):
+        return '<User %r>' % self.username

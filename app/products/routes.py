@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template
+
+
 #from app.main import bp
 
 products_bp = Blueprint('products_bp', __name__, template_folder='templates')
